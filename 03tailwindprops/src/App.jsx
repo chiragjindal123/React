@@ -21,6 +21,8 @@ function App() {
       <Card username="chai aur code ...." btn="click me"/>
       <br></br>
       <Card username="chai aur react ..."/>
+      <br></br>
+      <Card username="himanshu"/>
 
       {/* <figure class="md:flex bg-slate-100 rounded-xl p-8 md:p-0 dark:bg-slate-800">
   <img class="w-24 h-24 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" width="384" height="512" />

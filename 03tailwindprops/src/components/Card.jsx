@@ -2,6 +2,7 @@ import React from 'react'
 // devui.io for card and components
 function Card({username,btn="visit me"}) { // or {username} or props  btn default value is visit me
     // console.log("props",props);
+
     console.log(username,btn);
   return (
     <div className="relative h-[400px] w-[300px] rounded-md">
