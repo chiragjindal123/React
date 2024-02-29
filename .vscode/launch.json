@@ -9,7 +9,7 @@
       "stopAtEntry": false,
       "externalConsole": true,
       "cwd": "c:/Users/goluj/OneDrive/Desktop/taiwan dsa",
-      "program": "c:/Users/goluj/OneDrive/Desktop/taiwan dsa/build/Release/outRelease",
+      "program": "c:/Users/goluj/OneDrive/Desktop/taiwan dsa/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
