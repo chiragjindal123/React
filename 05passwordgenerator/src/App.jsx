@@ -36,7 +36,7 @@ function App() {
     }
 
     setPassword(pass)
-    
+  
 
   },[length, number, character, setPassword])
 
