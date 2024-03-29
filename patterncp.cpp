@@ -52,37 +52,54 @@ double eps = 1e-12;
 #define sz(x) ((ll)(x).size())
  
 
-void solve(){
-    int n;
-    cin>>n;
-    vector<string>gray;
+// void solve(){
+//     ll n;
+//     cin>>n;
 
-    gray.pb("0");
-    gray.pb("1");
+//     for(int i=0;i<n;i++){
+//         cout<<"#";
+//     }
+// }
 
-
-    for(int i=2;i<=n;i++){
-        int size=gray.size();
-
-        for(int i=size-1;i>=0;i--){
-            gray.pb(gray[i]);
+void print_checkerboard(int n) {
+    for (int i = 0; i < 2 * n; ++i) {
+        for (int j = 0; j < 2 * n; ++j) {
+            if ((i / 2 + j / 2) % 2 == 0) {
+                std::cout << '#';
+            } else {
+                std::cout << '.';
+            }
         }
-
-        for(int i=0;i<size;i++){
-
-            gray[i]="0"+gray[i];
-            gray[i+size]="1"+gray[i+size];
-        }
-    }
-
-    for(auto& it:gray){
-        cout<<it<<endl;
+        std::cout << std::endl;
     }
 }
-int main()
-{
- fast_cin();
- 
- solve();
- return 0;
+
+int main() {
+    fast_cin();
+    int t;
+    std::cin >> t;
+
+    for (int k = 0; k < t; ++k) {
+        int n;
+        std::cin >> n;
+        print_checkerboard(n);
+        
+    }
+
+    return 0;
 }
+
+// int main()
+// {
+//  fast_cin();
+//  ll t;
+//  cin >> t;
+//   while (t--) {
+//         int n;
+//         cin >> n;
+//         vector<string> checkerboard = generate_checkerboard(n);
+//         for (const string& row : checkerboard)
+//             cout << row << endl;
+//     }
+//  return 0;
+// }

@@ -53,36 +53,25 @@ double eps = 1e-12;
  
 
 void solve(){
-    int n;
-    cin>>n;
-    vector<string>gray;
+    ll a,b,c;
+    cin>>a>>b>>c;
 
-    gray.pb("0");
-    gray.pb("1");
-
-
-    for(int i=2;i<=n;i++){
-        int size=gray.size();
-
-        for(int i=size-1;i>=0;i--){
-            gray.pb(gray[i]);
-        }
-
-        for(int i=0;i<size;i++){
-
-            gray[i]="0"+gray[i];
-            gray[i+size]="1"+gray[i+size];
-        }
-    }
-
-    for(auto& it:gray){
-        cout<<it<<endl;
+    if(a<b && b<c){
+        cout<<"STAIR"<<endl;
+    }else if(b>a && b>c){
+        cout<<"PEAK"<<endl;
+    }else{
+        cout<<"NONE"<<endl;
     }
 }
 int main()
 {
  fast_cin();
- 
+ ll t;
+ cin >> t;
+ while(t--){
+
  solve();
+ }
  return 0;
 }

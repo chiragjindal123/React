@@ -52,37 +52,50 @@ double eps = 1e-12;
 #define sz(x) ((ll)(x).size())
  
 
-void solve(){
-    int n;
-    cin>>n;
-    vector<string>gray;
+void solve(int n,char a,char b,char c){
+     
+    if(n==0) return;
 
-    gray.pb("0");
-    gray.pb("1");
+    solve(n-1,a,c,b);
+    cout<<a<<" "<<c<<ln;
+    solve(n-1,b,a,c);
 
-
-    for(int i=2;i<=n;i++){
-        int size=gray.size();
-
-        for(int i=size-1;i>=0;i--){
-            gray.pb(gray[i]);
-        }
-
-        for(int i=0;i<size;i++){
-
-            gray[i]="0"+gray[i];
-            gray[i+size]="1"+gray[i+size];
-        }
-    }
-
-    for(auto& it:gray){
-        cout<<it<<endl;
-    }
 }
 int main()
 {
  fast_cin();
+     ll n;
+     cin>>n;
+     cout<<pow(2,n)-1<<ln;
+     solve(n,'1','2','3');
  
- solve();
  return 0;
 }
+
+
+// #include <bits/stdc++.h> 
+// using namespace std; 
+
+// void towerOfHanoi(int n, char from_rod, char to_rod, 
+// 				char aux_rod) 
+// { 
+// 	if (n == 0) { 
+// 		return; 
+// 	} 
+// 	towerOfHanoi(n - 1, from_rod, aux_rod, to_rod); 
+// 	cout << "Move disk " << n << " from rod " << from_rod 
+// 		<< " to rod " << to_rod << endl; 
+// 	towerOfHanoi(n - 1, aux_rod, to_rod, from_rod); 
+// } 
+
+// // Driver code 
+// int main() 
+// { 
+// 	int N = 3; 
+
+// 	// A, B and C are names of rods 
+// 	towerOfHanoi(N, 'A', 'C', 'B'); 
+// 	return 0; 
+// } 
+
+// // This is code is contributed by rathbhupendra

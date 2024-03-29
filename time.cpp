@@ -1,6 +1,3 @@
-#pragma GCC optimize("Ofast")
-#pragma GCC target("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx,avx,avx2,fma")
-#pragma GCC optimize("unroll-loops")
 #include <bits/stdc++.h> 
 #include <complex>
 #include <queue>
@@ -50,39 +47,56 @@ double eps = 1e-12;
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define all(x) (x).begin(), (x).end()
 #define sz(x) ((ll)(x).size())
- 
 
 void solve(){
-    int n;
-    cin>>n;
-    vector<string>gray;
-
-    gray.pb("0");
-    gray.pb("1");
-
-
-    for(int i=2;i<=n;i++){
-        int size=gray.size();
-
-        for(int i=size-1;i>=0;i--){
-            gray.pb(gray[i]);
-        }
-
-        for(int i=0;i<size;i++){
-
-            gray[i]="0"+gray[i];
-            gray[i+size]="1"+gray[i+size];
-        }
+    string s;
+    cin>>s;
+    string ch;
+    string ch1;
+    for(int i=0;i<2;i++){
+        ch+=s[i];
     }
 
-    for(auto& it:gray){
-        cout<<it<<endl;
+    int n=stoi(ch);
+
+    if(n==0){
+        ch1="12";
+        for(int i=2;i<s.size();i++){
+            ch1+=s[i];
+        }
+        cout<<ch1<<" "<<"AM"<<endl;
+    }else{
+        if(n==12){
+            ch1=to_string(n);
+            for(int i=2;i<s.size();i++){
+                ch1+=s[i];
+            }
+            cout<<ch1<<" "<<"PM"<<endl;
+        }else if(n>12){
+            n=n-12;
+            ch1 = (n < 10 ? "0" + to_string(n) : to_string(n));
+            for(int i=2;i<s.size();i++){
+                ch1+=s[i];
+            }
+            cout<<ch1<<" "<<"PM"<<endl;
+        }else{
+            ch1=to_string(n);
+            ch1 = (n < 10 ? "0" + to_string(n) : to_string(n));
+            for(int i=2;i<s.size();i++){
+                ch1+=s[i];
+            }
+            cout<<ch1<<" "<<"AM"<<endl;
+        }
     }
 }
+
 int main()
 {
  fast_cin();
- 
- solve();
+ ll t;
+ cin >> t;
+ for(int it=1;it<=t;it++) {
+     solve();
+ }
  return 0;
 }
