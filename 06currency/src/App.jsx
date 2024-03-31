@@ -14,8 +14,8 @@ function App() {
   const swap = () => {
     setFrom(to);
     setTo(from);
-    setconvertedAmount(amount);
     setAmount(convertedAmount);
+    setconvertedAmount(amount);
 
   };
   const convert = () => {
@@ -41,7 +41,7 @@ function App() {
               label="From" 
               amount={amount}
               currencyOption={options}
-              onCurrencyChange={(amount)=> setAmount(amount)}
+              onCurrencyChange={(amount)=> setFrom(amount)}
               onAmountChange={(amount)=> setAmount(amount)}
               selectCurrency={from}
 
@@ -65,7 +65,7 @@ function App() {
               onAmountChange={(amount)=> setconvertedAmount(amount)}
               selectCurrency={to}
               
-              amountDisabled
+              // amountDisabled
               />
             </div>
             <button
