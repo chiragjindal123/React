@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 
 export default function Post({ data, setPageNo }) {
+  console.log(data);
   useEffect(() => {
     const observer = new IntersectionObserver(
       (param) => {
@@ -11,6 +12,7 @@ export default function Post({ data, setPageNo }) {
       },
       { threshold: 0.5 }
     );
+    // console.log(observer);
   
     const lastImage = document.querySelector(".image-post:last-child");
     if (!lastImage) {
