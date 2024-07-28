@@ -1,155 +1,66 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
-#define fast()                        \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(0);                       \
-    cout.tie(0)
+const int MAXN = 100007;
 
-#define test(t) \
-    int t;      \
-    cin >> t;   \
-    while (t--)
+int parent[MAXN];
+int rankArr[MAXN]; // Renamed to avoid conflict with std::rank
 
-#define take(n) \
-    int n;      \
-    cin >> n
-
-#define pb push_back
-
-#define ppb pop_back
-
-#define len(a) (int)a.size()
-
-#define mp(a, b) make_pair(a, b)
-
-#define loop(i, a, b) for (int i = a; i < b; i++)
-
-#define nl "\n"
-
-#define NO cout << "NO" << nl
-
-#define YES cout << "YES" << nl
-
-#define ull unsigned long long
-
-#define ll long long
-
-#define rev(s) reverse(s.begin(), s.end())
-
-#define sortv(v) sort(v.begin(), v.end())
-
-#define sorta(a, n) sort(a, a + n)
-
-#define print(v, n)             \
-    for (int i = 0; i < n; i++) \
-    cout << v[i] << " "
-
-#define mod 998244353
-
-#define ninf INT_MIN
-
-#define pinf INT_MAX
-
-int parent[100007];
-
-int _rank[100007]; // number of elements in each set;
-
-void initialise(int n)
-
-{
-
-    loop(i, 1, n + 1)
-
-    {
-
+// Function to initialize the parent and rank arrays
+void initialise(int n) {
+    for (int i = 1; i <= n; i++) {
         parent[i] = i;
-
-        _rank[i] = 1;
+        rankArr[i] = 0; // Initialize rank to 0
     }
 }
 
-// path compression
-
-int find(int a)
-
-{
-
+// Function to find the root of an element with path compression
+int find(int a) {
     if (parent[a] == a)
-
         return a;
-
     return parent[a] = find(parent[a]);
 }
 
-void union_by_rank(int a, int b)
-
-{
-
-    // finding the root of each of the two elements
-
+// Function to perform union by rank
+void union_by_rank(int a, int b) {
     a = find(a);
-
     b = find(b);
 
-    if (a == b) // they are in same set so no need to merge
-
+    if (a == b) // If they are in the same set, no need to merge
         return;
 
-    if (_rank[a] > _rank[b]) // applying union by rank on dsu
-
-    {
-
+    if (rankArr[a] > rankArr[b]) {
         parent[b] = a;
-
-        _rank[a] += _rank[b]; // adding the number of elements of set B to set A
-    }
-
-    else
-    {
-
+    } else if (rankArr[a] < rankArr[b]) {
         parent[a] = b;
-
-        _rank[b] += _rank[a];
+    } else {
+        parent[b] = a;
+        rankArr[a]++;
     }
 }
 
-int main()
-
-{
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
 
     int n, k;
-
     cin >> n >> k;
 
-    initialise(n); // initialsing the parent and rank array
+    initialise(n); // Initialising the parent and rank arrays
 
-    while (k--)
-
-    {
-
-        int i, j;
-
-        cin >> i >> j;
-
-        // mergin i and j empires
-
-        union_by_rank(i, j);
+    for (int i = 0; i < k; i++) {
+        int u, v;
+        cin >> u >> v;
+        union_by_rank(u, v); // Merging the sets containing u and v
     }
 
-    // after all queries checking the number of distinct roots in the parents array that will be equal to number of distinct sets
-
-    int cnt = 0;
-
-    for (int i = 1; i <= n; i++)
-
-    {
-
-        if (parent[i] == i)
-
-            cnt++;
+    // Counting the number of distinct sets by finding distinct roots
+    set<int> distinct_sets;
+    for (int i = 1; i <= n; i++) {
+        distinct_sets.insert(find(i));
     }
 
-    cout << cnt << nl;
+    cout << distinct_sets.size() << "\n";
+    return 0;
 }
